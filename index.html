@@ -4,89 +4,94 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Iraaa ❤️ Goutam</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Playfair+Display:wght@600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
 <style>
+
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-overflow:hidden;
-background:black;
-color:white;
+background:linear-gradient(135deg,#fff8f0,#ffdce6);
+color:#b03060;
+overflow-x:hidden;
 }
 
-.slider{
-display:flex;
-width:400%;
-height:100vh;
-transition:1s ease;
-}
+/* HERO */
 
-.slide{
-width:100vw;
-height:100vh;
-flex-shrink:0;
+.hero{
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
+height:100vh;
 padding:20px;
+position:relative;
 }
 
-.slide1{background:linear-gradient(135deg,#ff4f81,#ff758c);}
-.slide2{background:linear-gradient(135deg,#ff6a88,#ff99ac);}
-.slide3{background:linear-gradient(135deg,#ff8fab,#ffc2d1);}
-.slide4{background:linear-gradient(135deg,#ff3e6c,#ff8fab);}
-
-h1{font-size:32px;}
+h1{
+font-family:'Dancing Script',cursive;
+font-size:60px;
+margin:0;
+color:#c94f7c;
+}
 
 .name{
-font-size:42px;
-font-weight:bold;
-border-right:3px solid white;
+font-family:'Playfair Display',serif;
+font-size:38px;
+margin-top:10px;
+border-right:2px solid #c94f7c;
 white-space:nowrap;
 overflow:hidden;
-animation:typing 3s steps(10), blink 0.6s infinite alternate;
+animation:typing 3s steps(20), blink 0.7s infinite alternate;
 }
 
 @keyframes typing{
 from{width:0}
-to{width:200px}
+to{width:280px}
 }
 
 @keyframes blink{
-from{border-color:white}
+from{border-color:#c94f7c}
 to{border-color:transparent}
 }
 
+.subtitle{
+margin-top:20px;
+font-size:18px;
+opacity:0.8;
+}
+
 button{
+margin-top:20px;
 padding:12px 25px;
 border:none;
-border-radius:25px;
-background:white;
-color:#ff4f81;
+border-radius:30px;
+background:#ffb6c1;
+color:#8b004f;
 font-size:16px;
 cursor:pointer;
-margin:10px;
+transition:0.3s;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-.nav{
-position:absolute;
-bottom:20px;
-width:100%;
-display:flex;
-justify-content:center;
+button:hover{
+transform:scale(1.07);
 }
 
-.kiss{
-position:absolute;
-font-size:22px;
-animation:float 6s linear infinite;
+.section{
+padding:60px 20px;
+text-align:center;
 }
 
-@keyframes float{
-0%{transform:translateY(100vh);}
-100%{transform:translateY(-10vh);}
+.counter-box{
+background:#fff0f5;
+padding:30px;
+border-radius:20px;
+display:inline-block;
 }
+
+/* Popup */
 
 .popup{
 position:fixed;
@@ -94,31 +99,57 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.9);
+background:rgba(255,240,245,0.95);
 display:none;
 justify-content:center;
 align-items:center;
-text-align:center;
-padding:20px;
 flex-direction:column;
+text-align:center;
+z-index:1000;
 }
 
 .popup-content{
 background:white;
-color:#ff4f81;
 padding:30px;
 border-radius:20px;
+color:#c94f7c;
+position:relative;
 }
 
-.firework{
+/* Heart Explosion */
+
+.heart-explosion{
 position:fixed;
-font-size:30px;
+font-size:28px;
 animation:explode 1.5s ease-out forwards;
 }
 
 @keyframes explode{
 0%{transform:scale(0);opacity:1;}
-100%{transform:scale(3);opacity:0;}
+100%{transform:scale(4);opacity:0;}
+}
+
+/* Floating Cats */
+
+.cat-float{
+position:fixed;
+font-size:35px;
+animation:floatCat 12s linear infinite;
+opacity:0.8;
+}
+
+@keyframes floatCat{
+0%{transform:translateY(100vh) rotate(0deg);}
+100%{transform:translateY(-10vh) rotate(360deg);}
+}
+
+/* Hero Cat */
+
+.cat-hero{
+position:absolute;
+left:5%;
+bottom:5%;
+width:120px;
 }
 
 </style>
@@ -126,66 +157,60 @@ animation:explode 1.5s ease-out forwards;
 
 <body>
 
-<div class="slider" id="slider">
-
-<div class="slide slide1">
-<h1>Happy Kisses Day 💋</h1>
-<div class="name">Iraaa ❤️</div>
-<p>From Goutam, your forever kiss supplier 😌</p>
+<div class="hero">
+<h1>Happy Kiss Day 💋</h1>
+<div class="name">Iraaa cuiteee 💖 </div>
+<div class="subtitle">
+Soft kiss from babyyy. we miss those kiss 😌
 </div>
 
-<div class="slide slide2">
-<h1>Kiss Counter 💋</h1>
-<p>Total Kisses Given:</p>
-<h2 id="count">0</h2>
-<button onclick="addKiss()">Give Me A Kiss 😘</button>
+<button onclick="scrollToSection()">Enter Love Portal</button>
+
+<img class="cat-hero" src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif">
 </div>
 
-<div class="slide slide3">
-<h1>Important Question 💍</h1>
-<p>Will you stay with me forever, Iraaa?</p>
+<div class="section">
+<h2>Kiss Counter 💋</h2>
+<div class="counter-box">
+<h1 id="count">0</h1>
+<button onclick="addKiss()">Give Kiss 😘</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Important Question 💍</h2>
+<p>Will you stay forever with Goutam?</p>
 <button onclick="showPopup()">Answer Carefully 😏</button>
-</div>
-
-<div class="slide slide4">
-<h1>Forever Mode Activated ❤️</h1>
-<p>
-No matter what happens…  
-I choose you. Every time.  
-– Goutam 💋
-</p>
-</div>
-
-</div>
-
-<div class="nav">
-<button onclick="prevSlide()">⬅</button>
-<button onclick="nextSlide()">➡</button>
 </div>
 
 <div class="popup" id="popup">
 <div class="popup-content">
-<h2>So… will you stay forever? 💍</h2>
-<button onclick="yesForever()">YES 😍❤️</button>
+<h2>Forever with Goutam? 💍</h2>
+<button id="yesBtn" onclick="yesForever()">YES 😍❤️</button>
+<button id="noBtn" onclick="changeNo()">NO 😼</button>
 </div>
 </div>
 
 <script>
-let index=0;
+
 let kisses=0;
+let noClicks=0;
+let yesSize=1;
 
-function showSlide(){
-document.getElementById("slider").style.transform="translateX(-"+(index*100)+"vw)";
-}
+const noTexts=[
+"Really? 😼",
+"Ohhh really?",
+"Are you sure?",
+"Think again.",
+"Wrong answer.",
+"Try again pookie.",
+"That button is broken.",
+"You can’t escape.",
+"Just press YES 😌"
+];
 
-function nextSlide(){
-if(index<3){index++;}
-showSlide();
-}
-
-function prevSlide(){
-if(index>0){index--;}
-showSlide();
+function scrollToSection(){
+window.scrollTo({top:window.innerHeight,behavior:'smooth'});
 }
 
 function addKiss(){
@@ -198,32 +223,93 @@ document.getElementById("popup").style.display="flex";
 }
 
 function yesForever(){
-document.getElementById("popup").innerHTML="<h1>YAYYY 😍💍</h1><p>Now you are officially stuck with Goutam forever 💋</p>";
-launchFireworks();
+document.getElementById("popup").innerHTML=
+"<h1>Good Choice 😌💘</h1><p>You are officially stuck with Goutam foreverrr 💋</p>";
+launchHearts();
 }
 
-function launchFireworks(){
-for(let i=0;i<25;i++){
-let fw=document.createElement("div");
-fw.classList.add("firework");
-fw.innerHTML="🎆";
-fw.style.left=Math.random()*100+"vw";
-fw.style.top=Math.random()*100+"vh";
-document.body.appendChild(fw);
-setTimeout(()=>{fw.remove();},1500);
+/* Heart Explosion */
+
+function launchHearts(){
+for(let i=0;i<50;i++){
+let heart=document.createElement("div");
+heart.classList.add("heart-explosion");
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.top=Math.random()*100+"vh";
+document.body.appendChild(heart);
+setTimeout(()=>{heart.remove();},1500);
 }
 }
 
-function createKiss(){
-let kiss=document.createElement("div");
-kiss.classList.add("kiss");
-kiss.innerHTML="💋";
-kiss.style.left=Math.random()*100+"vw";
-document.body.appendChild(kiss);
-setTimeout(()=>{kiss.remove();},6000);
+/* NO Button Chaos */
+
+function changeNo(){
+
+let noBtn=document.getElementById("noBtn");
+let yesBtn=document.getElementById("yesBtn");
+
+noBtn.innerText=noTexts[noClicks % noTexts.length];
+noClicks++;
+
+/* YES grows */
+yesSize+=0.3;
+yesBtn.style.transform="scale("+yesSize+")";
+
+/* NO moves */
+noBtn.style.position="absolute";
+noBtn.style.left=Math.random()*60+"%";
+noBtn.style.top=Math.random()*60+"%";
+
+spawnKnifeCat(noBtn);
 }
-setInterval(createKiss,900);
+
+/* Knife Cat Chase */
+
+function spawnKnifeCat(target){
+
+let cat=document.createElement("div");
+cat.innerHTML="🔪🐱";
+cat.style.position="fixed";
+cat.style.fontSize="50px";
+cat.style.left="0px";
+cat.style.top="80%";
+cat.style.transition="all 1s linear";
+
+document.body.appendChild(cat);
+
+let rect=target.getBoundingClientRect();
+
+setTimeout(()=>{
+cat.style.left=rect.left+"px";
+cat.style.top=rect.top+"px";
+},100);
+
+setTimeout(()=>{
+cat.remove();
+},1500);
+}
+
+/* Floating Chaos Cats */
+
+function spawnChaosCat(){
+const cats=["😾","🐱","💘","💖🐱","😡🐱"];
+let cat=document.createElement("div");
+cat.classList.add("cat-float");
+cat.innerHTML=cats[Math.floor(Math.random()*cats.length)];
+cat.style.left=Math.random()*100+"vw";
+document.body.appendChild(cat);
+setTimeout(()=>{cat.remove();},12000);
+}
+
+setInterval(spawnChaosCat,5000);
+
 </script>
 
 </body>
 </html>
+
+
+
+
+
