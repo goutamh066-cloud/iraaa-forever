@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iraaa ❤️ Goutam</title>
+
+<style>
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+overflow:hidden;
+background:black;
+color:white;
+}
+
+.slider{
+display:flex;
+width:400%;
+height:100vh;
+transition:1s ease;
+}
+
+.slide{
+width:100vw;
+height:100vh;
+flex-shrink:0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.slide1{background:linear-gradient(135deg,#ff4f81,#ff758c);}
+.slide2{background:linear-gradient(135deg,#ff6a88,#ff99ac);}
+.slide3{background:linear-gradient(135deg,#ff8fab,#ffc2d1);}
+.slide4{background:linear-gradient(135deg,#ff3e6c,#ff8fab);}
+
+h1{font-size:32px;}
+
+.name{
+font-size:42px;
+font-weight:bold;
+border-right:3px solid white;
+white-space:nowrap;
+overflow:hidden;
+animation:typing 3s steps(10), blink 0.6s infinite alternate;
+}
+
+@keyframes typing{
+from{width:0}
+to{width:200px}
+}
+
+@keyframes blink{
+from{border-color:white}
+to{border-color:transparent}
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:white;
+color:#ff4f81;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+}
+
+.nav{
+position:absolute;
+bottom:20px;
+width:100%;
+display:flex;
+justify-content:center;
+}
+
+.kiss{
+position:absolute;
+font-size:22px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+flex-direction:column;
+}
+
+.popup-content{
+background:white;
+color:#ff4f81;
+padding:30px;
+border-radius:20px;
+}
+
+.firework{
+position:fixed;
+font-size:30px;
+animation:explode 1.5s ease-out forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(0);opacity:1;}
+100%{transform:scale(3);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="slider" id="slider">
+
+<div class="slide slide1">
+<h1>Happy Kisses Day 💋</h1>
+<div class="name">Iraaa ❤️</div>
+<p>From Goutam, your forever kiss supplier 😌</p>
+</div>
+
+<div class="slide slide2">
+<h1>Kiss Counter 💋</h1>
+<p>Total Kisses Given:</p>
+<h2 id="count">0</h2>
+<button onclick="addKiss()">Give Me A Kiss 😘</button>
+</div>
+
+<div class="slide slide3">
+<h1>Important Question 💍</h1>
+<p>Will you stay with me forever, Iraaa?</p>
+<button onclick="showPopup()">Answer Carefully 😏</button>
+</div>
+
+<div class="slide slide4">
+<h1>Forever Mode Activated ❤️</h1>
+<p>
+No matter what happens…  
+I choose you. Every time.  
+– Goutam 💋
+</p>
+</div>
+
+</div>
+
+<div class="nav">
+<button onclick="prevSlide()">⬅</button>
+<button onclick="nextSlide()">➡</button>
+</div>
+
+<div class="popup" id="popup">
+<div class="popup-content">
+<h2>So… will you stay forever? 💍</h2>
+<button onclick="yesForever()">YES 😍❤️</button>
+</div>
+</div>
+
+<script>
+let index=0;
+let kisses=0;
+
+function showSlide(){
+document.getElementById("slider").style.transform="translateX(-"+(index*100)+"vw)";
+}
+
+function nextSlide(){
+if(index<3){index++;}
+showSlide();
+}
+
+function prevSlide(){
+if(index>0){index--;}
+showSlide();
+}
+
+function addKiss(){
+kisses++;
+document.getElementById("count").innerText=kisses;
+}
+
+function showPopup(){
+document.getElementById("popup").style.display="flex";
+}
+
+function yesForever(){
+document.getElementById("popup").innerHTML="<h1>YAYYY 😍💍</h1><p>Now you are officially stuck with Goutam forever 💋</p>";
+launchFireworks();
+}
+
+function launchFireworks(){
+for(let i=0;i<25;i++){
+let fw=document.createElement("div");
+fw.classList.add("firework");
+fw.innerHTML="🎆";
+fw.style.left=Math.random()*100+"vw";
+fw.style.top=Math.random()*100+"vh";
+document.body.appendChild(fw);
+setTimeout(()=>{fw.remove();},1500);
+}
+}
+
+function createKiss(){
+let kiss=document.createElement("div");
+kiss.classList.add("kiss");
+kiss.innerHTML="💋";
+kiss.style.left=Math.random()*100+"vw";
+document.body.appendChild(kiss);
+setTimeout(()=>{kiss.remove();},6000);
+}
+setInterval(createKiss,900);
+</script>
+
+</body>
+</html>
